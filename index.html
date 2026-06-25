@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Súper Técnico de Internet - Perú Fibra</title>
+    <!-- Tailwind CSS para diseño moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts para una tipografía amigable -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Confetti para celebrar el éxito -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        /* Animación para simular que está escribiendo el bot */
+        .dot-typing {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dot-typing span {
+            width: 8px;
+            height: 8px;
+            margin: 0 3px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot-typing span:nth-child(1) { animation-delay: -0.32s; }
+        .dot-typing span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- HEADER DE LA APP -->
+    <header class="bg-red-600 shadow-xl border-b-4 border-yellow-400 p-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Logotipo Simplificado de Perú Fibra en SVG -->
+                <div class="bg-white p-2 rounded-xl shadow-md flex items-center justify-center">
+                    <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="40" y="55" width="20" height="20" rx="2" stroke="#E31A1A" stroke-width="4"/>
+                        <path d="M50 55C50 40 40 30 25 35M50 55C50 35 30 25 35 15M50 55V20M50 55C50 40 60 30 75 35M50 55C50 35 70 25 65 15" stroke="#E31A1A" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="25" cy="35" r="4" fill="#F9C80E" stroke="#E31A1A" stroke-width="2"/>
+                        <circle cx="35" cy="15" r="4" fill="#F9C80E" stroke="#E31A1A" stroke-width="2"/>
+                        <circle cx="50" cy="20" r="4" fill="#F9C80E" stroke="#E31A1A" stroke-width="2"/>
+                        <circle cx="65" cy="15" r="4" fill="#F9C80E" stroke="#E31A1A" stroke-width="2"/>
+                        <circle cx="75" cy="35" r="4" fill="#F9C80E" stroke="#E31A1A" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold heading-font tracking-tight text-white flex items-center gap-2">
+                        PerúFibra <span class="text-yellow-300">Súper Técnico</span>
+                    </h1>
+                    <p class="text-xs sm:text-sm text-red-100 font-semibold uppercase tracking-wider">Aventura Interactiva de Aprendizaje para Jóvenes Héroes</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 bg-red-700 px-4 py-2 rounded-full border border-red-500">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <span class="text-xs sm:text-sm font-bold text-white">Misión en curso: Cliente Santiago de Surco</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CUADRO DE MANDOS PRINCIPAL -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- PANEL DE EXPLICACIÓN (IZQUIERDA) - CUADERNO DE AVENTURA -->
+        <section class="lg:col-span-5 bg-slate-800 rounded-3xl p-6 border-2 border-slate-700 shadow-2xl flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">📖</span>
+                    <h2 class="text-xl font-bold heading-font text-yellow-400">Cuaderno de Aventuras del Técnico</h2>
+                </div>
+                
+                <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+                    ¡Hola! Hoy vas a jugar a ser <strong>Santi</strong>, un héroe de la conectividad en Perú Fibra. Tu misión es llevar internet ultra rápido a las casas. Pero para que todo salga bien, tienes dos herramientas mágicas:
+                </p>
+
+                <!-- DICCIONARIO PARA NIÑOS -->
+                <div class="space-y-4 mb-6">
+                    <div class="bg-slate-700/50 p-3 rounded-2xl border border-slate-600 flex gap-3 items-start">
+                        <div class="text-2xl p-2 bg-yellow-500/10 text-yellow-400 rounded-xl">🤖</div>
+                        <div>
+                            <h3 class="font-bold text-sm text-white flex items-center gap-1">
+                                El Bot de Soporte (Telegram)
+                            </h3>
+                            <p class="text-xs text-slate-300 mt-1">Es como tu <strong>asistente personal en el celular</strong>. Le mandas fotos, le avisas cuando llegas y él te aprueba las misiones para avanzar.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-700/50 p-3 rounded-2xl border border-slate-600 flex gap-3 items-start">
+                        <div class="text-2xl p-2 bg-blue-500/10 text-blue-400 rounded-xl">🌀</div>
+                        <div>
+                            <h3 class="font-bold text-sm text-white flex items-center gap-1">
+                                Quantum (El Registro Central)
+                            </h3>
+                            <p class="text-xs text-slate-300 mt-1">Es el <strong>servidor de misiones de la empresa</strong>. Toda acción que hagas en la calle debe iniciarse y guardarse ahí para que cuente como ganada.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-700/50 p-3 rounded-2xl border border-slate-600 flex gap-3 items-start">
+                        <div class="text-2xl p-2 bg-purple-500/10 text-purple-400 rounded-xl">📦</div>
+                        <div>
+                            <h3 class="font-bold text-sm text-white flex items-center gap-1">
+                                ¿Qué es la CTO? (La Caja de Poder)
+                            </h3>
+                            <p class="text-xs text-slate-300 mt-1">Imagina que es una <strong>"zapatilla de enchufes gigante"</strong> colgada en el poste público de luz. De ahí sale la fibra que va a las casas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ANALOGÍA DE VIDIEOGUEGO -->
+                <div class="bg-red-950/40 border border-red-500/30 p-4 rounded-2xl">
+                    <h4 class="text-xs font-bold text-red-400 uppercase tracking-wide mb-2 flex items-center gap-1">
+                        🎮 Reglas del Juego Técnico
+                    </h4>
+                    <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                        <li><strong>Reporte de llegada:</strong> Para empezar tu misión, debes tomarle foto a la fachada y enviar tu ubicación GPS.</li>
+                        <li><strong>Autorizaciones:</strong> Si un árbol travieso rompe el cable, debes enviar un video de prueba para que los jefes te den un cable nuevo.</li>
+                        <li><strong>Finalización:</strong> ¡La selfie feliz! Nos tomamos una foto con el cliente sonriente sosteniendo su contrato firmado.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PROGRESO DEL JUEGO -->
+            <div class="mt-6 pt-4 border-t border-slate-700">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-slate-400">PROGRESO DEL SÚPER TÉCNICO</span>
+                    <span class="text-xs font-bold text-yellow-400" id="progressText">0% Completado</span>
+                </div>
+                <div class="w-full bg-slate-700 h-3 rounded-full overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-yellow-400 to-green-500 h-full w-0 transition-all duration-500"></div>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-2 text-center">Completa las 5 etapas en el celular de la derecha para ganar la insignia de Oro.</p>
+            </div>
+        </section>
+
+        <!-- PANEL DE SIMULACIÓN INTERACTIVA (CENTRO / DERECHA) -->
+        <section class="lg:col-span-7 flex flex-col">
+            <!-- NAVEGACIÓN DE PESTAÑAS (VISTAS DEL CELULAR) -->
+            <div class="flex gap-2 mb-3">
+                <button onclick="switchView('bot')" id="btnTabBot" class="flex-1 py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md bg-red-600 text-white border-2 border-red-500">
+                    <span>💬</span> Telegram Bot @PeruFibra
+                </button>
+                <button onclick="switchView('quantum')" id="btnTabQuantum" class="flex-1 py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-750">
+                    <span>🌀</span> Sistema QUANTUM
+                </button>
+            </div>
+
+            <!-- CONTENEDOR DEL DISPOSITIVO MÓVIL SIMULADO -->
+            <div class="flex-grow bg-slate-950 rounded-[2.5rem] p-4 border-8 border-slate-800 shadow-2xl relative min-h-[580px] flex flex-col">
+                <!-- Parlante frontal y cámara del celular simulado -->
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-6 bg-slate-800 rounded-b-2xl z-20 flex items-center justify-center">
+                    <div class="w-12 h-1 bg-slate-900 rounded-full mb-1"></div>
+                    <div class="w-2.5 h-2.5 bg-blue-900 rounded-full ml-3 mb-1"></div>
+                </div>
+
+                <!-- PANTALLA ACTIVA -->
+                <div class="flex-grow bg-slate-900 rounded-[2rem] overflow-hidden flex flex-col relative pt-4">
+                    
+                    <!-- VISTA 1: BOT DE TELEGRAM (CHAT INTERACTIVO) -->
+                    <div id="viewBot" class="flex flex-col h-full">
+                        <!-- Cabecera del Bot -->
+                        <div class="bg-slate-800 px-4 py-3 flex items-center gap-3 border-b border-slate-700">
+                            <div class="w-9 h-9 rounded-full bg-red-600 flex items-center justify-center font-bold text-white text-xs border border-yellow-400">
+                                PF
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Peru Fibra Soporte Bot</h3>
+                                <p class="text-[10px] text-green-400 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> bot activo
+                                </p>
+                            </div>
+                            <div class="ml-auto flex items-center gap-1 bg-slate-700 px-2 py-1 rounded-md text-xs font-semibold text-slate-300">
+                                <span>Ticket:</span> <span class="text-yellow-400">VT-5790</span>
+                            </div>
+                        </div>
+
+                        <!-- Zona de Mensajes del Chat -->
+                        <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-3 text-xs max-h-[350px]">
+                            <!-- Mensaje de Bienvenida del Bot -->
+                            <div class="flex items-start gap-2">
+                                <div class="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center text-[10px]">🤖</div>
+                                <div class="bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[80%] shadow-md">
+                                    <p class="font-bold text-yellow-400 mb-1">¡Hola Santi (Súper Técnico)! 👋</p>
+                                    <p class="mb-2">Para comenzar tu visita técnica del cliente, primero debes registrar que ya estás en su casa en el sistema.</p>
+                                    <p class="font-semibold text-red-400">PASO 1 - REPORTE DE LLEGADA 🚚</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estado de carga escribiendo -->
+                        <div id="botTyping" class="px-4 py-1 text-slate-400 text-xs flex items-center gap-2 hidden">
+                            <span>Soporte está validando</span>
+                            <div class="dot-typing"><span></span><span></span><span></span></div>
+                        </div>
+
+                        <!-- Botones de Acción Interactivos del Bot -->
+                        <div class="p-3 bg-slate-950/80 border-t border-slate-800 space-y-2">
+                            <div id="botActionArea" class="grid grid-cols-1 gap-2">
+                                <!-- Las opciones cambian dinámicamente según la fase -->
+                                <button onclick="triggerAction('reportArrival')" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-xs shadow">
+                                    📋 REPORTAR LLEGADA
+                                </button>
+                                <button onclick="showInfoModal('obligatorio')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2 px-4 rounded-xl transition duration-200 text-[11px] border border-slate-700">
+                                    ❓ ¿Por qué es obligatorio?
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VISTA 2: SISTEMA QUANTUM (MOCKUP DEL PANEL CENTRAL) -->
+                    <div id="viewQuantum" class="hidden flex-col h-full p-4 overflow-y-auto space-y-4">
+                        <div class="bg-blue-950/40 border border-blue-500/30 p-4 rounded-2xl">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-bold text-sm text-blue-400 flex items-center gap-2">
+                                    <span>🌀</span> Panel de Ordenes de Quantum
+                                </h3>
+                                <span id="quantumBadge" class="bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full">NO INICIADA</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-[11px]">
+                                <div class="bg-slate-850 p-2 rounded-lg border border-slate-850">
+                                    <p class="text-slate-400">Cliente:</p>
+                                    <p class="font-bold text-white">Familia Quispe</p>
+                                </div>
+                                <div class="bg-slate-850 p-2 rounded-lg border border-slate-850">
+                                    <p class="text-slate-400">Distrito:</p>
+                                    <p class="font-bold text-white">Santiago de Surco</p>
+                                </div>
+                                <div class="bg-slate-850 p-2 rounded-lg border border-slate-850">
+                                    <p class="text-slate-400">Campaña:</p>
+                                    <p class="font-bold text-yellow-400">Fibra 600 Mbps</p>
+                                </div>
+                                <div class="bg-slate-850 p-2 rounded-lg border border-slate-850">
+                                    <p class="text-slate-400">Derivación:</p>
+                                    <p class="font-bold text-white">VT los Rojo</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ESTADO EN QUANTUM -->
+                        <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-3">
+                            <h4 class="font-semibold text-xs text-slate-300 uppercase tracking-wider">Flujo de Trabajo Sincronizado</h4>
+                            
+                            <div class="space-y-2 text-xs">
+                                <div class="flex items-center gap-2">
+                                    <div id="qStep1" class="w-5 h-5 rounded-full bg-slate-700 text-slate-400 flex items-center justify-center font-bold text-[10px]">1</div>
+                                    <span class="text-slate-300 font-semibold">Iniciar Orden en Quantum</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div id="qStep2" class="w-5 h-5 rounded-full bg-slate-700 text-slate-400 flex items-center justify-center font-bold text-[10px]">2</div>
+                                    <span class="text-slate-400">Adjuntar Fachada y Ubicación en Bot</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div id="qStep3" class="w-5 h-5 rounded-full bg-slate-700 text-slate-400 flex items-center justify-center font-bold text-[10px]">3</div>
+                                    <span class="text-slate-400">Ejecutar el Trabajo / Pedir Autorizaciones</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div id="qStep4" class="w-5 h-5 rounded-full bg-slate-700 text-slate-400 flex items-center justify-center font-bold text-[10px]">4</div>
+                                    <span class="text-slate-400">Subir Acta y Tomarse la Selfie Final</span>
+                                </div>
+                            </div>
+
+                            <div id="quantumControls" class="pt-2">
+                                <button onclick="triggerQuantumStart()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-xl text-xs transition duration-200">
+                                    Iniciar Orden en Quantum (Misión Activa)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- CONSEJO MÁGICO -->
+                        <div class="bg-yellow-950/20 border border-yellow-500/30 p-3 rounded-xl text-[11px] text-yellow-300 flex items-start gap-2">
+                            <span>💡</span>
+                            <p><strong>Regla de Oro:</strong> Antes de reportar tu llegada en el Bot de Telegram, ¡tienes que iniciar la orden en Quantum! Si no, el bot te lo recordará.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER EXPLICATIVO -->
+    <footer class="bg-slate-950 text-slate-400 py-4 px-6 border-t border-slate-800 text-center text-xs mt-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <p>© 2026 Perú Fibra Súper Técnico. Diseñado con amor para la próxima generación de ingenieros en telecomunicaciones.</p>
+            <div class="flex gap-4">
+                <a href="#" onclick="resetGame()" class="text-yellow-400 hover:underline font-bold">🔄 Reiniciar Misión Completa</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VENTANAS MODALES SIMULADAS PARA INTERACCIONES -->
+    
+    <!-- 1. MODAL DE INFORMACIÓN (POR QUÉ ES OBLIGATORIO EL REPORTE DE LLEGADA) -->
+    <div id="infoModal" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-800 border-2 border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeModal('infoModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">×</button>
+            <div class="text-center">
+                <span class="text-4xl">🤔</span>
+                <h3 class="text-lg font-bold heading-font text-white mt-2 mb-4">¿Por qué es obligatorio reportar tu llegada?</h3>
+                <p class="text-xs text-slate-300 leading-relaxed text-left mb-4">
+                    ¡Excelente pregunta, futuro ingeniero! El reporte de llegada sirve para tres cosas sumamente importantes:
+                </p>
+                <ul class="text-xs text-slate-300 text-left space-y-2 list-decimal list-inside mb-6">
+                    <li><strong>Proteger tu seguridad:</strong> Así el centro de comando sabe exactamente dónde estás trabajando.</li>
+                    <li><strong>Transparencia para el cliente:</strong> Al enviarle tu ubicación, confirmas que ya estás en su puerta listo para la acción.</li>
+                    <li><strong>Control de tiempos:</strong> Nos ayuda a medir cuánto tardamos en resolver los problemas para mejorar nuestro servicio día a día.</li>
+                </ul>
+                <button onclick="closeModal('infoModal')" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-6 rounded-xl text-xs w-full">
+                    ¡Entendido, sigamos la misión!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MODAL DE ENTRADA GPS Y FOTO DE FACHADA -->
+    <div id="arrivalUploadModal" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-800 border-2 border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeModal('arrivalUploadModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">×</button>
+            <div class="text-center">
+                <span class="text-4xl">📸</span>
+                <h3 class="text-lg font-bold heading-font text-white mt-2 mb-2">Completando el Reporte de Llegada</h3>
+                <p class="text-xs text-slate-400 mb-4">Ayuda a Santi a capturar los datos requeridos para validar su llegada.</p>
+                
+                <div class="space-y-4 text-left">
+                    <!-- Simulador de foto de fachada -->
+                    <div class="border-2 border-dashed border-slate-600 p-4 rounded-2xl flex flex-col items-center justify-center bg-slate-900 cursor-pointer hover:border-yellow-400 transition" onclick="selectFacadePhoto()">
+                        <div id="facadePreview" class="w-full flex flex-col items-center justify-center">
+                            <!-- SVG de una bonita casa de Surco -->
+                            <svg class="w-16 h-16 text-slate-500 mb-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 85V45L50 20L85 45V85H15Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                <rect x="35" y="55" width="30" height="30" stroke="currentColor" stroke-width="4"/>
+                                <circle cx="50" cy="35" r="5" fill="currentColor"/>
+                            </svg>
+                            <span class="text-xs font-bold text-slate-300">Presiona aquí para simular foto de Fachada</span>
+                            <span class="text-[10px] text-slate-500">Se adjuntará de forma panorámica</span>
+                        </div>
+                    </div>
+
+                    <!-- Simulador de GPS -->
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-white">📍 Ubicación GPS</p>
+                            <p class="text-[10px] text-slate-400" id="gpsCoords">Coordenadas: Presiona el botón de la derecha</p>
+                        </div>
+                        <button onclick="simulateGPS()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-1 px-3 rounded-lg text-[10px]">
+                            Capturar GPS
+                        </button>
+                    </div>
+
+                    <!-- Plantilla de datos precargada -->
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 text-[10px] text-slate-300 space-y-1 font-mono">
+                        <p class="text-yellow-400 font-bold mb-1">📋 DATOS DE LA PLANTILLA:</p>
+                        <p>TICKET: <span class="text-white">VT-5790</span></p>
+                        <p>CONTRATA: <span class="text-white">TELECOM SUR</span></p>
+                        <p>CUADRILLA: <span class="text-white">CS-10 SANTIAGO</span></p>
+                        <p>CLIENTE: <span class="text-white">Quispe Huamán</span></p>
+                        <p>DERIVACION: <span class="text-white">VT LOS ROJO</span></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex gap-2">
+                    <button onclick="closeModal('arrivalUploadModal')" class="flex-1 bg-slate-700 hover:bg-slate-650 text-slate-300 font-bold py-2 rounded-xl text-xs">
+                        Cancelar
+                    </button>
+                    <button onclick="submitArrivalReport()" class="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold py-2 rounded-xl text-xs">
+                        Enviar reporte de llegada
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MODAL DE AUTORIZACIÓN (Paso 4: Árbol rompió el cable) -->
+    <div id="authorizationModal" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-800 border-2 border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeModal('authorizationModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">×</button>
+            <div class="text-center">
+                <span class="text-4xl">🌳⚡️</span>
+                <h3 class="text-lg font-bold heading-font text-white mt-2 mb-2">¡Oh no! Problemas en la calle</h3>
+                <p class="text-xs text-slate-400 mb-4">El cable de fibra óptica fue cortado por la poda de unos árboles de la municipalidad. Necesitamos un cambio completo de cable (Recableado).</p>
+                
+                <div class="space-y-3 text-left">
+                    <p class="text-xs font-bold text-yellow-400">🚨 Regla del Súper Técnico de Perú Fibra:</p>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Para que te autoricen usar un rollo de cable nuevo (50 metros), es obligatorio <strong>enviar un video explicativo claro</strong> de la zona donde se vea la rotura y subir las fotos a la App Quantum.
+                    </p>
+
+                    <!-- Simulador de captura de video -->
+                    <div class="border border-red-500/30 bg-red-950/20 p-3 rounded-xl flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-white">📹 Video de Evidencia</p>
+                            <p class="text-[10px] text-red-400" id="videoStatus">Estado: Falta capturar</p>
+                        </div>
+                        <button onclick="simulateVideo()" class="bg-red-600 hover:bg-red-500 text-white font-bold py-1 px-3 rounded-lg text-[10px]">
+                            Grabar Video (10s)
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-750 text-[10px] text-slate-300 font-mono space-y-1">
+                        <p class="text-yellow-400 font-bold mb-1">📋 PLANTILLA DE AUTORIZACIÓN:</p>
+                        <p>DETALLE: <span class="text-white">AUTORIZACION DE RECABLEADO DE CTO POR CORTE DE ARBOLES</span></p>
+                        <p>CTO ORIGEN: <span class="text-white">WN-1234567</span></p>
+                        <p>PUERTO USADO: <span class="text-white">Puerto 2</span></p>
+                        <p>METRAJE: <span class="text-white">50 metros aproximadamente</span></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex gap-2">
+                    <button onclick="closeModal('authorizationModal')" class="flex-1 bg-slate-700 hover:bg-slate-650 text-slate-300 font-bold py-2 rounded-xl text-xs">
+                        Cerrar
+                    </button>
+                    <button onclick="submitAuthorization()" class="flex-1 bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-2 rounded-xl text-xs">
+                        Solicitar Aprobación de Cable
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. MODAL DE FINALIZACIÓN (Paso 5: Selfie feliz) -->
+    <div id="finishModal" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-800 border-2 border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeModal('finishModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">×</button>
+            <div class="text-center">
+                <span class="text-4xl">🥳</span>
+                <h3 class="text-lg font-bold heading-font text-white mt-2 mb-2">¡Trabajo Terminado con Éxito!</h3>
+                <p class="text-xs text-slate-400 mb-4">El cliente tiene un súper internet de 600 Mbps de bajada y de subida. ¡Es hora de cerrar la misión!</p>
+                
+                <div class="space-y-4 text-left">
+                    <p class="text-xs font-bold text-yellow-400">📸 Requisito Final Obligatorio:</p>
+                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                        Para la entrega oficial, debes tomarle una <strong>foto de selfie al cliente con su acta firmada</strong> que demuestre su gran conformidad.
+                    </p>
+
+                    <!-- Simulador de Selfie del Cliente -->
+                    <div class="border-2 border-dashed border-slate-600 p-4 rounded-2xl flex flex-col items-center justify-center bg-slate-900 cursor-pointer hover:border-green-400 transition" onclick="simulateSelfie()">
+                        <div id="selfiePreview" class="w-full flex flex-col items-center justify-center">
+                            <!-- SVG de Cliente Feliz con su documento -->
+                            <svg class="w-16 h-16 text-slate-500 mb-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="4"/>
+                                <path d="M20 80C20 65 35 60 50 60C65 60 80 65 80 80" stroke="currentColor" stroke-width="4"/>
+                                <rect x="60" y="35" width="25" height="35" rx="2" fill="currentColor" opacity="0.3"/>
+                                <line x1="65" y1="45" x2="80" y2="45" stroke="currentColor" stroke-width="2"/>
+                                <line x1="65" y1="55" x2="80" y2="55" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span class="text-xs font-bold text-slate-300">Tocar para Tomar Selfie de Entrega</span>
+                            <span class="text-[10px] text-slate-500">Se requiere la selfie con el acta firmada</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 p-3 rounded-2xl border border-slate-700 text-[10px] text-slate-300 font-mono space-y-1">
+                        <p class="text-yellow-400 font-bold mb-1">📋 PLANTILLA DE FINALIZACIÓN:</p>
+                        <p>COD DE PEDIDO: <span class="text-white">53316</span></p>
+                        <p>DNI DEL CLIENTE: <span class="text-white">09876543</span></p>
+                        <p>MOTIVO DE CIERRE: <span class="text-white">SE REALIZO RECABLEADO, CABLE AVERIADO POR PODA DE ARBOLES. CLIENTE CONFORME CON EL SERVICIO.</span></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex gap-2">
+                    <button onclick="closeModal('finishModal')" class="flex-1 bg-slate-700 hover:bg-slate-650 text-slate-300 font-bold py-2 rounded-xl text-xs">
+                        Cancelar
+                    </button>
+                    <button onclick="submitFinalization()" class="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold py-2 rounded-xl text-xs">
+                        ¡Finalizar Misión!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO SYNTHESIS Y LOGICA DEL JUEGO -->
+    <script>
+        // Estado inicial de la simulación
+        let gameState = {
+            quantumStarted: false,
+            arrivalReported: false,
+            facadePhotoAttached: false,
+            gpsCaptured: false,
+            authRequested: false,
+            authVideoRecorded: false,
+            missionFinished: false,
+            clientSelfieTaken: false,
+            currentPhase: 1 // 1: Llegada, 2: Consulta, 3: Cancelar, 4: Autorización, 5: Finalización
+        };
+
+        // Generador de sonidos de sintetizador para hacerlo divertido (Web Audio API)
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.1);
+                } else if (type === 'success') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+                    osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1);
+                    osc.frequency.setValueAtTime(900, audioCtx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.45);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.45);
+                } else if (type === 'error') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                }
+            } catch (e) {
+                console.log("Audio API no soportado o bloqueado por el navegador.");
+            }
+        }
+
+        // Cambiar entre la pestaña del Bot de Telegram y el Sistema Quantum
+        function switchView(viewName) {
+            playSound('click');
+            const tabBot = document.getElementById('btnTabBot');
+            const tabQuantum = document.getElementById('btnTabQuantum');
+            const viewBot = document.getElementById('viewBot');
+            const viewQuantum = document.getElementById('viewQuantum');
+
+            if (viewName === 'bot') {
+                tabBot.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow bg-red-600 text-white border-2 border-red-500";
+                tabQuantum.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-750";
+                viewBot.classList.remove('hidden');
+                viewBot.classList.add('flex');
+                viewQuantum.classList.add('hidden');
+            } else {
+                tabQuantum.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow bg-blue-600 text-white border-2 border-blue-500";
+                tabBot.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow bg-slate-800 text-slate-400 border border-slate-700 hover:bg-slate-750";
+                viewQuantum.classList.remove('hidden');
+                viewBot.classList.remove('flex');
+                viewBot.classList.add('hidden');
+            }
+        }
+
+        // Abrir y cerrar modals
+        function showInfoModal(type) {
+            playSound('click');
+            if (type === 'obligatorio') {
+                document.getElementById('infoModal').classList.remove('hidden');
+            }
+        }
+
+        function closeModal(id) {
+            playSound('click');
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Actualizar el porcentaje global de la aventura
+        function updateProgress() {
+            let completedPoints = 0;
+            if (gameState.quantumStarted) completedPoints += 20;
+            if (gameState.arrivalReported) completedPoints += 20;
+            if (gameState.authRequested) completedPoints += 30;
+            if (gameState.missionFinished) completedPoints += 30;
+
+            document.getElementById('progressText').innerText = `${completedPoints}% Completado`;
+            document.getElementById('progressBar').style.width = `${completedPoints}%`;
+        }
+
+        // SIMULADOR QUANTUM: Iniciar la orden de trabajo
+        function triggerQuantumStart() {
+            playSound('success');
+            gameState.quantumStarted = true;
+            
+            // Cambiar badges de Quantum
+            const qBadge = document.getElementById('quantumBadge');
+            qBadge.innerText = "ORDEN EN PROCESO";
+            qBadge.className = "bg-green-500/20 text-green-400 border border-green-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full";
+            
+            // Marcar paso 1 de Quantum en verde
+            const step1 = document.getElementById('qStep1');
+            step1.className = "w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-[10px]";
+            step1.innerText = "✓";
+
+            // Mostrar controles del Quantum actualizados
+            document.getElementById('quantumControls').innerHTML = `
+                <div class="bg-green-950/40 border border-green-500/30 p-2.5 rounded-xl text-xs text-green-400 font-semibold flex items-center gap-2">
+                    <span>⚡️</span> ¡La orden está oficialmente iniciada en Quantum! Ya puedes usar el bot.
+                </div>
+            `;
+
+            // Enviar mensaje automático al chat del bot
+            addBotMessage("Soporte", "⚠️ ¡Detección de Quantum! Veo que has iniciado tu orden de servicio. Ahora procedamos a registrar la fachada de la vivienda para confirmar tu ubicación.", "system");
+
+            updateProgress();
+        }
+
+        // SIMULADOR BOT: Acciones dinámicas
+        function triggerAction(actionName) {
+            playSound('click');
+            if (actionName === 'reportArrival') {
+                if (!gameState.quantumStarted) {
+                    playSound('error');
+                    // Advertencia al usuario para que empiece en Quantum
+                    addBotMessage("Soporte Error", "❌ ¡ERROR DE ORDEN! No has iniciado tu orden en el sistema Quantum de Perú Fibra. Recuerda que no podemos registrar la llegada si no has iniciado el juego en el Quantum.", "error");
+                    return;
+                }
+                // Si ya inició, abrimos el formulario para adjuntar fachada y ubicación
+                document.getElementById('arrivalUploadModal').classList.remove('hidden');
+            } else if (actionName === 'viewConsultDetails') {
+                // Paso 2: Explicamos la CTO no encontrada
+                addBotMessage("Santi (Súper Técnico)", "🔎 Realizando validaciones... El cliente no figura con CTO disponible a la vista. Necesito consultar las CTOs más cercanas de nuestro mapa.", "user");
+                
+                showBotTyping(true);
+                setTimeout(() => {
+                    showBotTyping(false);
+                    addBotMessage("Soporte", "👉 Respuesta del Bot: Se valida. Deberás usar la CTO número WN-130-1891480 en el Puerto 14 para poder darle internet al cliente.", "bot");
+                    
+                    // Pasar a la siguiente fase (Autorizaciones)
+                    setNextPhase(4);
+                }, 2000);
+            } else if (actionName === 'triggerAuthorizationModal') {
+                // Abre el modal para grabar el video del cable roto
+                document.getElementById('authorizationModal').classList.remove('hidden');
+            } else if (actionName === 'triggerFinishModal') {
+                // Abre el modal de la selfie final
+                document.getElementById('finishModal').classList.remove('hidden');
+            }
+        }
+
+        // CAPTURA DE FOTOS EN MODALES
+        function selectFacadePhoto() {
+            playSound('success');
+            gameState.facadePhotoAttached = true;
+            document.getElementById('facadePreview').innerHTML = `
+                <div class="w-full text-center py-2">
+                    <span class="text-3xl">🏠</span>
+                    <p class="text-xs text-green-400 font-bold mt-1">✓ Foto de fachada tomada con éxito</p>
+                    <p class="text-[9px] text-slate-400">Mz. A - Lt.16 Uno - Urb. Libertad, Surco</p>
+                </div>
+            `;
+        }
+
+        function simulateGPS() {
+            playSound('success');
+            gameState.gpsCaptured = true;
+            document.getElementById('gpsCoords').innerHTML = `
+                <span class="text-green-400 font-bold">✓ Latitud: -12.1124° | Longitud: -77.0142°</span>
+            `;
+        }
+
+        // ENVIAR EL REPORTE DE LLEGADA DESDE EL MODAL
+        function submitArrivalReport() {
+            if (!gameState.facadePhotoAttached || !gameState.gpsCaptured) {
+                playSound('error');
+                alert("Debes tomar la foto de la fachada y capturar la ubicación GPS primero para completar tu reporte.");
+                return;
+            }
+
+            playSound('success');
+            gameState.arrivalReported = true;
+            document.getElementById('arrivalUploadModal').classList.add('hidden');
+
+            // Actualizar vista en Quantum
+            const qStep2 = document.getElementById('qStep2');
+            qStep2.className = "w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-[10px]";
+            qStep2.innerText = "✓";
+
+            // Mensajes en el Chat
+            addBotMessage("Santi (Súper Técnico)", "📍 Reporto Llegada.\n[Enviando Ubicación GPS]\n[Enviando foto de Fachada Panorámica 🏠]\nTicket: VT-5790\nContrata: Telecom Sur\nCliente: Quispe Huamán", "user");
+            
+            showBotTyping(true);
+            setTimeout(() => {
+                showBotTyping(false);
+                addBotMessage("Soporte", "✅ ¡LLEGADA REGISTRADA EXITOSAMENTE! Procesando en Quantum. Tiempo estimado de validación: 10 segundos.", "bot");
+                
+                // Pasar a la fase 2 de consulta automáticamente
+                setTimeout(() => {
+                    addBotMessage("Soporte", "🤔 PASO 2: CONSULTA DE CTO.\nSanti, un momento... Nos reportas que no visualizas la caja de conexión (CTO) en el poste. Presiona el botón para consultar una solución.", "bot");
+                    
+                    // Modificar botones de acción para la fase de consulta
+                    setNextPhase(2);
+                }, 1500);
+
+            }, 2000);
+
+            updateProgress();
+        }
+
+        // SIMULADOR DE VIDEO PARA AUTORIZACIÓN (Paso 4)
+        function simulateVideo() {
+            playSound('success');
+            gameState.authVideoRecorded = true;
+            document.getElementById('videoStatus').innerText = "✓ Video de 10 segundos grabado (Rama rompió la fibra)";
+            document.getElementById('videoStatus').className = "text-green-400 font-bold";
+        }
+
+        function submitAuthorization() {
+            if (!gameState.authVideoRecorded) {
+                playSound('error');
+                alert("Por favor, graba el video explicativo como evidencia para solicitar el cable.");
+                return;
+            }
+
+            playSound('success');
+            gameState.authRequested = true;
+            document.getElementById('authorizationModal').classList.add('hidden');
+
+            // Mensajes en el chat de Telegram
+            addBotMessage("Santi (Súper Técnico)", "🌳 [Vídeo de Evidencia Adjunto 📹]\nSolicito Autorización de Recableado. El cable fue cortado por corte de árboles en la zona.\nCTO: WN-1234567 | Puerto: 2 | Metraje: 50 metros.", "user");
+
+            showBotTyping(true);
+            setTimeout(() => {
+                showBotTyping(false);
+                addBotMessage("Soporte", "👨‍💻 Paula (Asistente de Autorizaciones):\nSe validaron las evidencias en video. ¡SOLICITUD APROBADA! Procede a instalar los 50 metros de fibra óptica.", "bot");
+                
+                // Siguiente fase: Finalización
+                setTimeout(() => {
+                    addBotMessage("Soporte", "🎉 ¡Súper trabajo técnico realizado con éxito!\nAhora procede al PASO 5: FINALIZACIÓN DEL SERVICIO para cerrar tu orden en el sistema.", "bot");
+                    setNextPhase(5);
+                }, 1500);
+
+            }, 2500);
+
+            // Actualizar vista en Quantum
+            const qStep3 = document.getElementById('qStep3');
+            qStep3.className = "w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-[10px]";
+            qStep3.innerText = "✓";
+
+            updateProgress();
+        }
+
+        // SIMULADOR DE SELFIE (Paso 5)
+        function simulateSelfie() {
+            playSound('success');
+            gameState.clientSelfieTaken = true;
+            document.getElementById('selfiePreview').innerHTML = `
+                <div class="w-full text-center py-2">
+                    <span class="text-3xl">👨‍👩‍👦🤳</span>
+                    <p class="text-xs text-green-400 font-bold mt-1">✓ ¡Selfie feliz capturada con el acta firmada!</p>
+                </div>
+            `;
+        }
+
+        function submitFinalization() {
+            if (!gameState.clientSelfieTaken) {
+                playSound('error');
+                alert("Es obligatorio tomar la foto de selfie de entrega antes de finalizar la misión.");
+                return;
+            }
+
+            playSound('success');
+            gameState.missionFinished = true;
+            document.getElementById('finishModal').classList.add('hidden');
+
+            addBotMessage("Santi (Súper Técnico)", "🤳 [Selfie del Cliente Feliz Adjunta]\nEnviando plantilla de cierre.\nCod Pedido: 53316\nMotivo: Se realizó recableado, cliente conforme con el servicio.", "user");
+
+            showBotTyping(true);
+            setTimeout(() => {
+                showBotTyping(false);
+                addBotMessage("Soporte", "🏁 ¡ORDEN CERRADA EN QUANTUM EXITOSAMENTE!\n¡Felicidades Súper Técnico Santi! Has llevado conectividad, felicidad y diversión hoy. Misión 100% completada.", "bot");
+
+                // Confetti para celebrar
+                confetti({
+                    particleCount: 150,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+
+                // Cambiar botones de acción a "Volver a jugar"
+                document.getElementById('botActionArea').innerHTML = `
+                    <button onclick="resetGame()" class="w-full bg-gradient-to-r from-yellow-500 to-green-600 hover:from-yellow-400 hover:to-green-500 text-white font-bold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-xs shadow-lg">
+                        🏆 ¡NIVEL COMPLETADO! Jugar de Nuevo
+                    </button>
+                `;
+
+            }, 2500);
+
+            // Actualizar vista en Quantum
+            const qStep4 = document.getElementById('qStep4');
+            qStep4.className = "w-5 h-5 rounded-full bg-green-500 text-white flex items-center justify-center font-bold text-[10px]";
+            qStep4.innerText = "✓";
+
+            updateProgress();
+        }
+
+        // Agregar un mensaje a la simulación del chat de Telegram
+        function addBotMessage(sender, text, type) {
+            const chat = document.getElementById('chatMessages');
+            const msgElement = document.createElement('div');
+            msgElement.className = "flex items-start gap-2 animate-fade-in";
+
+            let avatar = "🤖";
+            let bubbleClass = "bg-slate-800 text-slate-200";
+            let senderNameColor = "text-yellow-400";
+
+            if (type === 'user') {
+                avatar = "👷";
+                bubbleClass = "bg-blue-600 text-white rounded-tr-none ml-auto";
+                senderNameColor = "text-blue-200";
+                msgElement.querySelector // Align self right
+            } else if (type === 'system') {
+                avatar = "⚠️";
+                bubbleClass = "bg-yellow-950/40 border border-yellow-500/30 text-yellow-300";
+                senderNameColor = "text-yellow-400";
+            } else if (type === 'error') {
+                avatar = "🚨";
+                bubbleClass = "bg-red-950/40 border border-red-500/30 text-red-300";
+                senderNameColor = "text-red-400";
+            } else {
+                avatar = "🤖";
+                bubbleClass = "bg-slate-800 text-slate-200 rounded-tl-none";
+                senderNameColor = "text-yellow-400";
+            }
+
+            msgElement.innerHTML = `
+                ${type !== 'user' ? `<div class="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center text-[10px]">${avatar}</div>` : ''}
+                <div class="${bubbleClass} p-3 rounded-2xl max-w-[80%] shadow-md">
+                    <p class="font-bold ${senderNameColor} mb-1">${sender}</p>
+                    <p class="whitespace-pre-line">${text}</p>
+                </div>
+                ${type === 'user' ? `<div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-[10px]">${avatar}</div>` : ''}
+            `;
+
+            chat.appendChild(msgElement);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // Controlar el indicador de cargando/escribiendo del bot
+        function showBotTyping(show) {
+            const el = document.getElementById('botTyping');
+            if (show) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Modificar los botones según la fase del juego
+        function setNextPhase(phase) {
+            gameState.currentPhase = phase;
+            const actionArea = document.getElementById('botActionArea');
+
+            if (phase === 2) {
+                actionArea.innerHTML = `
+                    <button onclick="triggerAction('viewConsultDetails')" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-2.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-xs shadow">
+                        🔍 CONSULTAR CTO MÁS CERCANA
+                    </button>
+                `;
+            } else if (phase === 4) {
+                actionArea.innerHTML = `
+                    <button onclick="triggerAction('triggerAuthorizationModal')" class="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-xs shadow animate-pulse">
+                        🌳 SOLICITAR AUTORIZACIÓN (CABLE ROTO)
+                    </button>
+                `;
+            } else if (phase === 5) {
+                actionArea.innerHTML = `
+                    <button onclick="triggerAction('triggerFinishModal')" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-xs shadow">
+                        🤳 TERMINAR TRABAJO Y TOMAR SELFIE
+                    </button>
+                `;
+            }
+        }
+
+        // REINICIAR TODO EL JUEGO
+        function resetGame() {
+            playSound('success');
+            gameState = {
+                quantumStarted: false,
+                arrivalReported: false,
+                facadePhotoAttached: false,
+                gpsCaptured: false,
+                authRequested: false,
+                authVideoRecorded: false,
+                missionFinished: false,
+                clientSelfieTaken: false,
+                currentPhase: 1
+            };
+
+            // Reiniciar UI de Quantum
+            const qBadge = document.getElementById('quantumBadge');
+            qBadge.innerText = "NO INICIADA";
+            qBadge.className = "bg-red-500/20 text-red-400 border border-red-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full";
+
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`qStep${i}`);
+                step.className = "w-5 h-5 rounded-full bg-slate-700 text-slate-400 flex items-center justify-center font-bold text-[10px]";
+                step.innerText = i;
+            }
+
+            document.getElementById('quantumControls').innerHTML = `
+                <button onclick="triggerQuantumStart()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-xl text-xs transition duration-200">
+                    Iniciar Orden en Quantum (Misión Activa)
+                </button>
+            `;
+
+            // Reset de modales y vistas
+            document.getElementById('facadePreview').innerHTML = `
+                <svg class="w-16 h-16 text-slate-500 mb-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 85V45L50 20L85 45V85H15Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                    <rect x="35" y="55" width="30" height="30" stroke="currentColor" stroke-width="4"/>
+                    <circle cx="50" cy="35" r="5" fill="currentColor"/>
+                </svg>
+                <span class="text-xs font-bold text-slate-300">Presiona aquí para simular foto de Fachada</span>
+                <span class="text-[10px] text-slate-500">Se adjuntará de forma panorámica</span>
+            `;
+
+            document.getElementById('gpsCoords').innerHTML = `Coordenadas: Presiona el botón de la derecha`;
+            document.getElementById('videoStatus').innerText = "Estado: Falta capturar";
+            document.getElementById('videoStatus').className = "text-red-400";
+            
+            document.getElementById('selfiePreview').innerHTML = `
+                <svg class="w-16 h-16 text-slate-500 mb-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="35" r="20" stroke="currentColor" stroke-width="4"/>
+                    <path d="M20 80C20 65 35 60 50 60C65 60 80 65 80 80" stroke="currentColor" stroke-width="4"/>
+                    <rect x="60" y="35" width="25" height="35" rx="2" fill="currentColor" opacity="0.3"/>
+                    <line x1="65" y1="45" x2="80" y2="45" stroke="currentColor" stroke-width="2"/>
+                    <line x1="65" y1="55" x2="80" y2="55" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span class="text-xs font-bold text-slate-300">Tocar para Tomar Selfie de Entrega</span>
+                <span class="text-[10px] text-slate-500">Se requiere la selfie con el acta firmada</span>
+            `;
+
+            // Reset Chat
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="flex items-start gap-2">
+                    <div class="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center text-[10px]">🤖</div>
+                    <div class="bg-slate-800 text-slate-200 p-3 rounded-2xl rounded-tl-none max-w-[80%] shadow-md">
+                        <p class="font-bold text-yellow-400 mb-1">¡Hola Santi (Súper Técnico)! 👋</p>
+                        <p class="mb-2">Para comenzar tu visita técnica del cliente, primero debes registrar que ya estás en su casa en el sistema.</p>
+                        <p class="font-semibold text-red-400">PASO 1 - REPORTE DE LLEGADA 🚚</p>
+                    </div>
+                </div>
+            `;
+
+            // Botones iniciales
+            document.getElementById('botActionArea').innerHTML = `
+                <button onclick="triggerAction('reportArrival')" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 text-xs shadow">
+                    📋 REPORTAR LLEGADA
+                </button>
+                <button onclick="showInfoModal('obligatorio')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2 px-4 rounded-xl transition duration-200 text-[11px] border border-slate-700">
+                    ❓ ¿Por qué es obligatorio?
+                </button>
+            `;
+
+            switchView('bot');
+            updateProgress();
+        }
+    </script>
+</body>
+</html>
